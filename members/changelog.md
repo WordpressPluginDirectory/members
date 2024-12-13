@@ -1,4 +1,18 @@
 # Change Log
+## 3.2.16 - 2024-12-12
+### Fixed
+- Protected posts being forced-hidden from API search even if setting was off
+
+## 3.2.15 - 2024-12-10
+### Fixed
+- Translation errors
+- Fixed styles and formatting on add-ons and about pages
+### Added
+- Growth Tools menu item
+
+## 3.2.14 - 2024-11-30
+### Fixed
+- Error in REST API calls when posts results not an array
 
 ## 3.2.12 - 2024-11-29
 ### Fixed

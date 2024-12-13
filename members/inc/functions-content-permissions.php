@@ -321,12 +321,12 @@ function members_convert_old_post_meta( $post_id ) {
  */
 function members_filter_protected_posts_for_rest( $posts, $query ) {
     // If not content permissions enabled, or it is enabled but not protected, bail.
-    if ( ! members_content_permissions_enabled() && ! members_is_hidden_protected_posts_enabled() ) {
+    if ( ! members_content_permissions_enabled() || ( members_content_permissions_enabled() && ! members_is_hidden_protected_posts_enabled() ) ) {
         return $posts;
     }
 
-    // Check if the current request is a REST API request
-    if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+    // Check if the current request is a REST API request and $posts is valid array
+    if ( defined( 'REST_REQUEST' ) && REST_REQUEST && is_array($posts) ) {
         // Loop through the posts
         foreach ( $posts as $key => $post ) {
             if ( ! members_can_current_user_view_post( $post->ID ) ) {
